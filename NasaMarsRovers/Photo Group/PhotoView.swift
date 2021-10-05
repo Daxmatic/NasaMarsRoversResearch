@@ -20,7 +20,8 @@ struct PhotoView: View {
         VStack {
             switch vm.state {
                 case .success(let data):
-                    let children: [CameraUrlList] = {
+                   
+                    var children: [CameraUrlList] = {
                         var picList: [CameraUrlList] = []
                         for k in data.photos {
                             let item = CameraUrlList(id: k.id, pictureList: k.imgSrc, children: [CameraUrlList(id: k.id, pictureList: k.imgSrc)])

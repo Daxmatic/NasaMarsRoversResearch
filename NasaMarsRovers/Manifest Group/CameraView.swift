@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-struct CameraView: View {
+struct CameraView: View, Equatable {
     @StateObject private var vm = ManifestViewModelImpl(
         service: ManifestServiceImpl()
     )
@@ -17,102 +17,55 @@ struct CameraView: View {
     var body: some View {
         let camerasOnSol = vm.camerasOnSol
 
-        ScrollViewReader { scrollView in
-            VStack {
-                List(camerasOnSol) { solDay in
-                    DisclosureGroup {
-                        ForEach(solDay.camera, id: \.self) { camera in
-                            NavigationLink(destination: PhotoView(cameraName: camera, solDay: solDay.id, roverName: roverName)) {
-                                Label {
-                                    Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })")  /// TODO: get the names from the photo model instead of the manifest
-                                        .font(.body)
-                                        .foregroundColor(.primary)
-                                    Text("Number of photo's: \(solDay.totalPicOnSol)")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                } icon: {
-                                    Image(systemName: "camera.aperture")
-                                        .renderingMode(.original)
-                                        .symbolRenderingMode(.hierarchical)
-                                        .foregroundColor(.green)
+        NavigationView {
+            ScrollViewReader { _ in
+                VStack {
+                    List(camerasOnSol) { solDay in
+                        DisclosureGroup {
+                            ForEach(solDay.camera, id: \.self) { camera in
+                                NavigationLink(destination: PhotoView(cameraName: camera, solDay: solDay.id, roverName: roverName)) {
+                                    Label {
+                                        Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })") // TODO: get the names from the photo model instead of the manifest
+                                            .font(.body)
+                                            .foregroundColor(.primary)
+                                        Text("Number of photo's: \(solDay.totalPicOnSol)")
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                    } icon: {
+                                        Image(systemName: "camera.aperture")
+                                            .renderingMode(.original)
+                                            .symbolRenderingMode(.hierarchical)
+                                            .foregroundColor(.green)
+                                    }
                                 }
-                            }
-                        }.id(camerasOnSol.indices)
+                            }.id(camerasOnSol.indices)
+                        }
+                        label: {
+                            Row(headline: "Sol: \(solDay.id)", caption: "Date: \(solDay.earthDate)", totPic: "Number of photo's: \(solDay.totalPicOnSol)", image: Image(systemName: "camera.viewfinder"))
+                        }
+                        .listRowSeparatorTint(.gray)
                     }
-                    label: {
-                        Row(headline: "Sol: \(solDay.id)", caption: "Date: \(solDay.earthDate)", totPic: "Number of photo's: \(solDay.totalPicOnSol)", image: Image(systemName: "camera.viewfinder"))
-                    }
-                    .listRowSeparatorTint(.gray)
+
+                    // MARK: On Top expandable List view TODO Needs to go in its own little place
+
+                    // MARK: From here we find the "Buttons" to scroll through the lists since some rovers have 3000+ Mars days (Sols ) which is kinda rough to scroll trough
+
+                    // MARK: the idea is to move this to the modelviewController and update via combine or something like that this is now really shitty code.
+
+                    .id(camerasOnSol.indices)
+
+                    // MARK: This is the end of the Button list.
                 }
-
-// MARK: On Top expandable List view TODO Needs to go in its own little place
-// MARK: From here we find the "Buttons" to scroll through the lists since some rovers have 3000+ Mars days (Sols ) which is kinda rough to scroll trough
-// MARK: the idea is to move this to the modelviewController and update via combine or something like that this is now really shitty code.
-
-                .id(camerasOnSol.indices)
-                HStack(alignment: .center) {
-                    Button(action: {
-                        withAnimation {
-                            currentIndex = 0
-                            scrollView.scrollTo(0)
-                            currentIndex = 0
-                        }
-                    }) {
-                        Image(systemName: "arrow.uturn.left.circle.fill")
-                            .renderingMode(.original)
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.system(size: 18))
-                            .foregroundColor(.green)
-                    }
-                    .padding(.leading)
-                    Button(action: {
-                        withAnimation {
-                            currentIndex -= 8
-                            scrollView.scrollTo(currentIndex, anchor: .top)
-                        }
-                    }) {
-                        Image(systemName: "arrow.backward.circle.fill")
-                            .renderingMode(.original)
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.system(size: 18))
-                            .foregroundColor(.green)
-                    }
-                    .padding(24)
-
-                    Button(action: {
-                        withAnimation {
-                            currentIndex += 8
-                            scrollView.scrollTo(currentIndex, anchor: .top)
-                        }
-                    }) {
-                        Image(systemName: "arrow.forward.circle.fill")
-                            .renderingMode(.original)
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.system(size: 18))
-                            .foregroundColor(.green)
-                    }
-                    .padding(24)
-
-                    Button(action: {
-                        withAnimation {
-                            currentIndex = vm.camerasOnSol.count
-                            scrollView.scrollTo(currentIndex)
-                        }
-                    }) {
-                        Image(systemName: "arrow.uturn.right.circle.fill")
-                            .renderingMode(.original)
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.system(size: 18))
-                            .foregroundColor(.green)
-                    }
-                    .padding(.trailing)
-                }
-// MARK: This is the end of the Button list.
             }
         }
         .task {
             await vm.getManifests()
         }
+    }
+
+    static func == (lhs: CameraView, rhs: CameraView) -> Bool {
+        print("LHS RHS Called maar hij word niet echt gecalled??")
+        return lhs.roverName == rhs.roverName
     }
 }
 
