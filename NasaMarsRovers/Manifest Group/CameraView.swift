@@ -13,10 +13,9 @@ struct CameraView: View, Equatable {
         service: ManifestServiceImpl()
     )
     @State var roverName: String
-    @State private var currentIndex = 0 /// should be not needed if i can publish the row index to the view.
+    //@State private var currentIndex = 0 /// should be not needed if i can publish the row index to the view.
     var body: some View {
         let camerasOnSol = vm.camerasOnSol
-
         NavigationView {
             ScrollViewReader { _ in
                 VStack {
@@ -38,21 +37,21 @@ struct CameraView: View, Equatable {
                                             .foregroundColor(.green)
                                     }
                                 }
-                            }.id(camerasOnSol.indices)
+                            }.id(UUID())
                         }
                         label: {
                             Row(headline: "Sol: \(solDay.id)", caption: "Date: \(solDay.earthDate)", totPic: "Number of photo's: \(solDay.totalPicOnSol)", image: Image(systemName: "camera.viewfinder"))
                         }
                         .listRowSeparatorTint(.gray)
-                    }
+                    }.id(UUID())
 
-                    // MARK: On Top expandable List view TODO Needs to go in its own little place
+                        // MARK: On Top expandable List view TODO Needs to go in its own little place
 
-                    // MARK: From here we find the "Buttons" to scroll through the lists since some rovers have 3000+ Mars days (Sols ) which is kinda rough to scroll trough
+                        // MARK: From here we find the "Buttons" to scroll through the lists since some rovers have 3000+ Mars days (Sols ) which is kinda rough to scroll trough
 
-                    // MARK: the idea is to move this to the modelviewController and update via combine or something like that this is now really shitty code.
+                        // MARK: the idea is to move this to the modelviewController and update via combine or something like that this is now really shitty code.
 
-                    .id(camerasOnSol.indices)
+                        .id(camerasOnSol.indices)
 
                     // MARK: This is the end of the Button list.
                 }

@@ -53,7 +53,8 @@ struct PhotoView: View {
 
                                 }.id(UUID())
 
-                            }.id(solDay)
+                            }.id(UUID())
+                            Spacer(minLength: 100)
                             HStack(alignment: .center) {
                                 Button(action: {
                                     withAnimation {
