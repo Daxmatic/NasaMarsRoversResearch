@@ -13,7 +13,7 @@ struct CamerasOnSol: Identifiable {
     var sol: Int
     var earthDate: String
     var totalPicOnSol: Int
-    var cam: [String]
+    var camera: [String]
     var children: [CamerasOnSol]? = nil
 }
 

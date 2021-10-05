@@ -21,6 +21,7 @@
 		5F397713270C778700933541 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39770F270C778700933541 /* PhotoView.swift */; };
 		5F397715270C77D200933541 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397714270C77D200933541 /* ApiConstants.swift */; };
 		5F397717270C783200933541 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397716270C783200933541 /* CameraView.swift */; };
+		5F39771A270C7D2500933541 /* IndexControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397719270C7D2500933541 /* IndexControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		5F39770F270C778700933541 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		5F397714270C77D200933541 /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		5F397716270C783200933541 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		5F397719270C7D2500933541 /* IndexControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +74,11 @@
 		5F3976F2270C765C00933541 /* NasaMarsRovers */ = {
 			isa = PBXGroup;
 			children = (
+				5F3976F3270C765C00933541 /* NasaMarsRoversApp.swift */,
 				5F39770B270C772C00933541 /* Info.plist */,
+				5F397718270C7CE400933541 /* Shared Group */,
 				5F397702270C767F00933541 /* Photo Group */,
 				5F397701270C767100933541 /* Manifest Group */,
-				5F3976F3270C765C00933541 /* NasaMarsRoversApp.swift */,
 				5F3976F5270C765C00933541 /* ContentView.swift */,
 				5F397714270C77D200933541 /* ApiConstants.swift */,
 				5F3976F7270C765D00933541 /* Assets.xcassets */,
@@ -113,6 +116,14 @@
 				5F39770C270C778700933541 /* PhotoViewModel.swift */,
 			);
 			path = "Photo Group";
+			sourceTree = "<group>";
+		};
+		5F397718270C7CE400933541 /* Shared Group */ = {
+			isa = PBXGroup;
+			children = (
+				5F397719270C7D2500933541 /* IndexControlView.swift */,
+			);
+			path = "Shared Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				5F397715270C77D200933541 /* ApiConstants.swift in Sources */,
 				5F397712270C778700933541 /* PhotoModel.swift in Sources */,
 				5F397711270C778700933541 /* PhotoDetailView.swift in Sources */,
+				5F39771A270C7D2500933541 /* IndexControlView.swift in Sources */,
 				5F397717270C783200933541 /* CameraView.swift in Sources */,
 				5F39770A270C76CB00933541 /* ManifestService.swift in Sources */,
 				5F397713270C778700933541 /* PhotoView.swift in Sources */,

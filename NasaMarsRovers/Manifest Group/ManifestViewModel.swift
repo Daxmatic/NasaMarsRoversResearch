@@ -32,7 +32,7 @@ final class ManifestViewModelImpl: ManifestViewModel {
             manifests = jsonResponse.0.compactMap {$0.photoManifest}
             photoList = jsonResponse.1.map({ $0 })
             for k in photoList {
-                let item = CamerasOnSol(sol: k.sol, earthDate: k.earthDate, totalPicOnSol: k.totalPhotos, cam: k.cameras.compactMap { $0.rawValue })
+                let item = CamerasOnSol(sol: k.sol, earthDate: k.earthDate, totalPicOnSol: k.totalPhotos, camera: k.cameras.compactMap { $0.rawValue })
                 camerasOnSol.append(item)
             }
             return

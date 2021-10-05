@@ -21,7 +21,7 @@ struct CameraView: View {
             VStack {
                 List(camerasOnSol) { solDay in
                     DisclosureGroup {
-                        ForEach(solDay.cam, id: \.self) { camera in
+                        ForEach(solDay.camera, id: \.self) { camera in
                             NavigationLink(destination: PhotoView(cameraName: camera, solDay: solDay.id, roverName: roverName)) {
                                 Label {
                                     Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })")  /// TODO: get the names from the photo model instead of the manifest
