@@ -13,7 +13,7 @@ struct CameraView: View {
         service: ManifestServiceImpl()
     )
     @State var roverName: String
-    @State private var currentIndex = 0
+    @State private var currentIndex = 0 /// should be not needed if i can publish the row index to the view.
     var body: some View {
         let camerasOnSol = vm.camerasOnSol
 
@@ -24,7 +24,7 @@ struct CameraView: View {
                         ForEach(solDay.cam, id: \.self) { camera in
                             NavigationLink(destination: PhotoView(cameraName: camera, solDay: solDay.id, roverName: roverName)) {
                                 Label {
-                                    Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })")
+                                    Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })")  /// TODO: get the names from the photo model instead of the manifest
                                         .font(.body)
                                         .foregroundColor(.primary)
                                     Text("Number of photo's: \(solDay.totalPicOnSol)")
@@ -44,6 +44,11 @@ struct CameraView: View {
                     }
                     .listRowSeparatorTint(.gray)
                 }
+
+// MARK: On Top expandable List view TODO Needs to go in its own little place
+// MARK: From here we find the "Buttons" to scroll through the lists since some rovers have 3000+ Mars days (Sols ) which is kinda rough to scroll trough
+// MARK: the idea is to move this to the modelviewController and update via combine or something like that this is now really shitty code.
+
                 .id(camerasOnSol.indices)
                 HStack(alignment: .center) {
                     Button(action: {
@@ -102,6 +107,7 @@ struct CameraView: View {
                     }
                     .padding(.trailing)
                 }
+// MARK: This is the end of the Button list.
             }
         }
         .task {
@@ -109,6 +115,8 @@ struct CameraView: View {
         }
     }
 }
+
+// MARK: CameraRow View perhaps i will move that to another file and have a look if i can share the rowview
 
 extension CameraView {
     struct Row: View {
