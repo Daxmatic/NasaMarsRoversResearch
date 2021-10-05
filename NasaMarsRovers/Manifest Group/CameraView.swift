@@ -17,92 +17,90 @@ struct CameraView: View {
     var body: some View {
         let camerasOnSol = vm.camerasOnSol
 
-        NavigationView {
-            ScrollViewReader { scrollView in
-                VStack {
-                    List(camerasOnSol) { solDay in
-                        DisclosureGroup {
-                            ForEach(solDay.cam, id: \.self) { camera in
-                                NavigationLink(destination: PhotoView(cameraName: camera, solDay: solDay.id, roverName: roverName)) {
-                                    Label {
-                                        Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })")
-                                            .font(.body)
-                                            .foregroundColor(.primary)
-                                        Text("Number of photo's: \(solDay.totalPicOnSol)")
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                    } icon: {
-                                        Image(systemName: "camera.aperture")
-                                            .renderingMode(.original)
-                                            .symbolRenderingMode(.hierarchical)
-                                            .foregroundColor(.green)
-                                    }
+        ScrollViewReader { scrollView in
+            VStack {
+                List(camerasOnSol) { solDay in
+                    DisclosureGroup {
+                        ForEach(solDay.cam, id: \.self) { camera in
+                            NavigationLink(destination: PhotoView(cameraName: camera, solDay: solDay.id, roverName: roverName)) {
+                                Label {
+                                    Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })")
+                                        .font(.body)
+                                        .foregroundColor(.primary)
+                                    Text("Number of photo's: \(solDay.totalPicOnSol)")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                } icon: {
+                                    Image(systemName: "camera.aperture")
+                                        .renderingMode(.original)
+                                        .symbolRenderingMode(.hierarchical)
+                                        .foregroundColor(.green)
                                 }
-                            }.id(camerasOnSol.indices)
-                        }
-                        label: {
-                            Row(headline: "Sol: \(solDay.id)", caption: "Date: \(solDay.earthDate)", totPic: "Number of photo's: \(solDay.totalPicOnSol)", image: Image(systemName: "camera.viewfinder"))
-                        }
-                        .listRowSeparatorTint(.gray)
+                            }
+                        }.id(camerasOnSol.indices)
                     }
-                    .id(camerasOnSol.indices)
-                    HStack(alignment: .center) {
-                        Button(action: {
-                            withAnimation {
-                                currentIndex = 0
-                                scrollView.scrollTo(0)
-                                currentIndex = 0
-                            }
-                        }) {
-                            Image(systemName: "arrow.uturn.left.circle.fill")
-                                .renderingMode(.original)
-                                .symbolRenderingMode(.hierarchical)
-                                .font(.system(size: 18))
-                                .foregroundColor(.green)
-                        }
-                        .padding(.leading)
-                        Button(action: {
-                            withAnimation {
-                                currentIndex -= 8
-                                scrollView.scrollTo(currentIndex, anchor: .top)
-                            }
-                        }) {
-                            Image(systemName: "arrow.backward.circle.fill")
-                                .renderingMode(.original)
-                                .symbolRenderingMode(.hierarchical)
-                                .font(.system(size: 18))
-                                .foregroundColor(.green)
-                        }
-                        .padding(24)
-
-                        Button(action: {
-                            withAnimation {
-                                currentIndex += 8
-                                scrollView.scrollTo(currentIndex, anchor: .top)
-                            }
-                        }) {
-                            Image(systemName: "arrow.forward.circle.fill")
-                                .renderingMode(.original)
-                                .symbolRenderingMode(.hierarchical)
-                                .font(.system(size: 18))
-                                .foregroundColor(.green)
-                        }
-                        .padding(24)
-
-                        Button(action: {
-                            withAnimation {
-                                currentIndex = vm.camerasOnSol.count
-                                scrollView.scrollTo(currentIndex)
-                            }
-                        }) {
-                            Image(systemName: "arrow.uturn.right.circle.fill")
-                                .renderingMode(.original)
-                                .symbolRenderingMode(.hierarchical)
-                                .font(.system(size: 18))
-                                .foregroundColor(.green)
-                        }
-                        .padding(.trailing)
+                    label: {
+                        Row(headline: "Sol: \(solDay.id)", caption: "Date: \(solDay.earthDate)", totPic: "Number of photo's: \(solDay.totalPicOnSol)", image: Image(systemName: "camera.viewfinder"))
                     }
+                    .listRowSeparatorTint(.gray)
+                }
+                .id(camerasOnSol.indices)
+                HStack(alignment: .center) {
+                    Button(action: {
+                        withAnimation {
+                            currentIndex = 0
+                            scrollView.scrollTo(0)
+                            currentIndex = 0
+                        }
+                    }) {
+                        Image(systemName: "arrow.uturn.left.circle.fill")
+                            .renderingMode(.original)
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 18))
+                            .foregroundColor(.green)
+                    }
+                    .padding(.leading)
+                    Button(action: {
+                        withAnimation {
+                            currentIndex -= 8
+                            scrollView.scrollTo(currentIndex, anchor: .top)
+                        }
+                    }) {
+                        Image(systemName: "arrow.backward.circle.fill")
+                            .renderingMode(.original)
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 18))
+                            .foregroundColor(.green)
+                    }
+                    .padding(24)
+
+                    Button(action: {
+                        withAnimation {
+                            currentIndex += 8
+                            scrollView.scrollTo(currentIndex, anchor: .top)
+                        }
+                    }) {
+                        Image(systemName: "arrow.forward.circle.fill")
+                            .renderingMode(.original)
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 18))
+                            .foregroundColor(.green)
+                    }
+                    .padding(24)
+
+                    Button(action: {
+                        withAnimation {
+                            currentIndex = vm.camerasOnSol.count
+                            scrollView.scrollTo(currentIndex)
+                        }
+                    }) {
+                        Image(systemName: "arrow.uturn.right.circle.fill")
+                            .renderingMode(.original)
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 18))
+                            .foregroundColor(.green)
+                    }
+                    .padding(.trailing)
                 }
             }
         }

@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        CameraView(roverName:"Perseverance")
+        NavigationView {
+            CameraView(roverName:"Perseverance")
+                .navigationTitle("Mars Rovers")
+        }
     }
 }
 

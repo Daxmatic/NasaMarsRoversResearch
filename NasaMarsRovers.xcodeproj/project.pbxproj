@@ -11,6 +11,16 @@
 		5F3976F6270C765C00933541 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3976F5270C765C00933541 /* ContentView.swift */; };
 		5F3976F8270C765D00933541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F3976F7270C765D00933541 /* Assets.xcassets */; };
 		5F3976FB270C765D00933541 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F3976FA270C765D00933541 /* Preview Assets.xcassets */; };
+		5F397707270C76CB00933541 /* ManifestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397703270C76CA00933541 /* ManifestViewModel.swift */; };
+		5F397708270C76CB00933541 /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397704270C76CA00933541 /* Manifest.swift */; };
+		5F397709270C76CB00933541 /* CamerasOnSol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397705270C76CB00933541 /* CamerasOnSol.swift */; };
+		5F39770A270C76CB00933541 /* ManifestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397706270C76CB00933541 /* ManifestService.swift */; };
+		5F397710270C778700933541 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39770C270C778700933541 /* PhotoViewModel.swift */; };
+		5F397711270C778700933541 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39770D270C778700933541 /* PhotoDetailView.swift */; };
+		5F397712270C778700933541 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39770E270C778700933541 /* PhotoModel.swift */; };
+		5F397713270C778700933541 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F39770F270C778700933541 /* PhotoView.swift */; };
+		5F397715270C77D200933541 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397714270C77D200933541 /* ApiConstants.swift */; };
+		5F397717270C783200933541 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F397716270C783200933541 /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +29,17 @@
 		5F3976F5270C765C00933541 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5F3976F7270C765D00933541 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F3976FA270C765D00933541 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5F397703270C76CA00933541 /* ManifestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManifestViewModel.swift; sourceTree = "<group>"; };
+		5F397704270C76CA00933541 /* Manifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
+		5F397705270C76CB00933541 /* CamerasOnSol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamerasOnSol.swift; sourceTree = "<group>"; };
+		5F397706270C76CB00933541 /* ManifestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManifestService.swift; sourceTree = "<group>"; };
+		5F39770B270C772C00933541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5F39770C270C778700933541 /* PhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
+		5F39770D270C778700933541 /* PhotoDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		5F39770E270C778700933541 /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		5F39770F270C778700933541 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		5F397714270C77D200933541 /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		5F397716270C783200933541 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +72,12 @@
 		5F3976F2270C765C00933541 /* NasaMarsRovers */ = {
 			isa = PBXGroup;
 			children = (
+				5F39770B270C772C00933541 /* Info.plist */,
+				5F397702270C767F00933541 /* Photo Group */,
+				5F397701270C767100933541 /* Manifest Group */,
 				5F3976F3270C765C00933541 /* NasaMarsRoversApp.swift */,
 				5F3976F5270C765C00933541 /* ContentView.swift */,
+				5F397714270C77D200933541 /* ApiConstants.swift */,
 				5F3976F7270C765D00933541 /* Assets.xcassets */,
 				5F3976F9270C765D00933541 /* Preview Content */,
 			);
@@ -65,6 +90,29 @@
 				5F3976FA270C765D00933541 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5F397701270C767100933541 /* Manifest Group */ = {
+			isa = PBXGroup;
+			children = (
+				5F397716270C783200933541 /* CameraView.swift */,
+				5F397705270C76CB00933541 /* CamerasOnSol.swift */,
+				5F397704270C76CA00933541 /* Manifest.swift */,
+				5F397706270C76CB00933541 /* ManifestService.swift */,
+				5F397703270C76CA00933541 /* ManifestViewModel.swift */,
+			);
+			path = "Manifest Group";
+			sourceTree = "<group>";
+		};
+		5F397702270C767F00933541 /* Photo Group */ = {
+			isa = PBXGroup;
+			children = (
+				5F39770D270C778700933541 /* PhotoDetailView.swift */,
+				5F39770E270C778700933541 /* PhotoModel.swift */,
+				5F39770F270C778700933541 /* PhotoView.swift */,
+				5F39770C270C778700933541 /* PhotoViewModel.swift */,
+			);
+			path = "Photo Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +185,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F397715270C77D200933541 /* ApiConstants.swift in Sources */,
+				5F397712270C778700933541 /* PhotoModel.swift in Sources */,
+				5F397711270C778700933541 /* PhotoDetailView.swift in Sources */,
+				5F397717270C783200933541 /* CameraView.swift in Sources */,
+				5F39770A270C76CB00933541 /* ManifestService.swift in Sources */,
+				5F397713270C778700933541 /* PhotoView.swift in Sources */,
+				5F397708270C76CB00933541 /* Manifest.swift in Sources */,
+				5F397710270C778700933541 /* PhotoViewModel.swift in Sources */,
 				5F3976F6270C765C00933541 /* ContentView.swift in Sources */,
+				5F397707270C76CB00933541 /* ManifestViewModel.swift in Sources */,
 				5F3976F4270C765C00933541 /* NasaMarsRoversApp.swift in Sources */,
+				5F397709270C76CB00933541 /* CamerasOnSol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,12 +329,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NasaMarsRovers/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NasaMarsRovers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,12 +359,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NasaMarsRovers/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NasaMarsRovers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
