@@ -17,6 +17,7 @@ class PhotoViewModel: ObservableObject {
     }
 
     @Published private(set) var state: State = .na
+    @Published private(set) var photoUrlList: [PhotoUrlList] = []
     private let service: ManifestService
 
     init(service: ManifestService) {
@@ -26,12 +27,16 @@ class PhotoViewModel: ObservableObject {
     func getURLs(url: URL) async {
         self.state = .loading
         do {
+            self.photoUrlList.removeAll()
             let urls = try await service.fetchURLs(url: url)
             self.state = .success(data: urls)
+            for k in urls.photos {
+                let item = PhotoUrlList(id: k.id, pictureList: k.imgSrc, children: [PhotoUrlList(id: k.id, pictureList: k.imgSrc)])
+                self.photoUrlList.append(item)
+            }
+            return
         } catch {
             self.state = .failed(error: error)
         }
-        
     }
 }
-

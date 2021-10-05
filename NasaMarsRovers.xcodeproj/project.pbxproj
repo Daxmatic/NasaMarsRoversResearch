@@ -98,11 +98,11 @@
 		5F397701270C767100933541 /* Manifest Group */ = {
 			isa = PBXGroup;
 			children = (
+				5F397703270C76CA00933541 /* ManifestViewModel.swift */,
 				5F397716270C783200933541 /* CameraView.swift */,
 				5F397705270C76CB00933541 /* CamerasOnSol.swift */,
 				5F397704270C76CA00933541 /* Manifest.swift */,
 				5F397706270C76CB00933541 /* ManifestService.swift */,
-				5F397703270C76CA00933541 /* ManifestViewModel.swift */,
 			);
 			path = "Manifest Group";
 			sourceTree = "<group>";

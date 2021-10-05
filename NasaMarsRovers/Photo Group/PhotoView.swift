@@ -19,19 +19,10 @@ struct PhotoView: View {
     var body: some View {
         VStack {
             switch vm.state {
-                case .success(let data):
-                   
-                    var children: [CameraUrlList] = {
-                        var picList: [CameraUrlList] = []
-                        for k in data.photos {
-                            let item = CameraUrlList(id: k.id, pictureList: k.imgSrc, children: [CameraUrlList(id: k.id, pictureList: k.imgSrc)])
-                            picList.append(item)
-                        }
-                        return picList
-                    }()
-
+                case .success:
+                    let children = vm.photoUrlList
                     let columns: [GridItem] =
-                    Array(repeating: .init(.flexible()), count: 2)
+                        Array(repeating: .init(.flexible()), count: 2)
                     ScrollView {
                         ScrollViewReader { scrollView in
                             Spacer()
@@ -124,9 +115,7 @@ struct PhotoView: View {
                             .padding(.bottom)
 
                             .font(.caption)
-
                         }
-
                     }
                 case .loading:
                     ProgressView()

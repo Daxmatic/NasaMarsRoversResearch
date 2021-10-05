@@ -17,10 +17,10 @@ struct CamerasOnSol: Identifiable {
     var children: [CamerasOnSol]? = nil
 }
 
-struct CameraUrlList: Identifiable {
+struct PhotoUrlList: Identifiable {
     var id: Int
     var pictureList: String
-    var children: [CameraUrlList]? = nil
+    var children: [PhotoUrlList]? = nil
 }
 
 
