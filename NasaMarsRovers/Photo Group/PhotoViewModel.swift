@@ -27,7 +27,7 @@ class PhotoViewModel: ObservableObject {
     func getURLs(url: URL) async {
         self.state = .loading
         do {
-            self.photoUrlList.removeAll()
+            //self.photoUrlList.removeAll()
             let urls = try await service.fetchURLs(url: url)
             self.state = .success(data: urls)
             for k in urls.photos {
