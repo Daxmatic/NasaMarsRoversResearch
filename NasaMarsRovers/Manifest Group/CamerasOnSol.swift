@@ -14,7 +14,6 @@ struct CamerasOnSol: Identifiable {
     var totalPicOnSol: Int
     var camera: [String]
     var full: [String]
-   // var combine: ([String],[String])
     var children: [CamerasOnSol]? = nil
 }
 
