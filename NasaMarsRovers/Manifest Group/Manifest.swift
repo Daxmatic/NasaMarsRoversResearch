@@ -56,7 +56,8 @@ struct SolSelectedCameras: Codable, Hashable {
 
 enum SimpleCameraName: String, Codable, Hashable, CaseIterable {
     case edlDdcam = "EDL_DDCAM"
-    case edlPucam1 = "EDL_PUCAM1"
+
+    case edlPucam1 = "EDL_PUCAM1"  //== ? "Parachute Up-Look Camera A" : "Parachute Up-Look Camera A"
     case edlPucam2 = "EDL_PUCAM2"
     case edlRdcam = "EDL_RDCAM"
     case edlRucam = "EDL_RUCAM"
@@ -82,7 +83,38 @@ enum SimpleCameraName: String, Codable, Hashable, CaseIterable {
     case minites = "MINITES"
     case pancam = "PANCAM"
 
-    func cameraNameTypes() -> String {
+//    var cameraType: String {
+//        self == .edlRucam ? "Rover Up-Look Camera" : "Rover Up-Look Camera"
+//        self == .edlDdcam ? "Descent Stage Down-Look Camera" : "Descent Stage Down-Look Camera"
+//        self == .edlPucam1 ? "Parachute Up-Look Camera A" : "Parachute Up-Look Camera A"
+//        self == .edlPucam2 ? "Parachute Up-Look Camera B" : "Parachute Up-Look Camera B"
+//        self == .edlRdcam ? "Rover Down-Look Camera":"Rover Down-Look Camera"
+//        self == .frontHazcamLeftA ? "Front Hazard Avoidance Camera - Left": "Front Hazard Avoidance Camera - Left"
+//        self == .frontHazcamRightA ? "Front Hazard Avoidance Camera - Right":"Front Hazard Avoidance Camera - Right"
+//        self == .mczLeft ? "Mast Camera Zoom - Left":"Mast Camera Zoom - Left"
+//        self == .mczRight ? "Mast Camera Zoom - Right":"Mast Camera Zoom - Right"
+//        self == .navcam ? "Navigation Camera":"Navigation Camera"
+//        self == .navcamLeft ? "Navigation Camera - Left":"Navigation Camera - Left"
+//        self == .navcamRight ? "Navigation Camera - Right":"Navigation Camera - Right"
+//        self == .rearHazcamLeft ? "Rear Hazard Avoidance Camera - Left":"Rear Hazard Avoidance Camera - Left"
+//        self == .rearHazcamRight ? "Rear Hazard Avoidance Camera - Right":"Rear Hazard Avoidance Camera - Right"
+//        self == .supercamRmi ? "Super Camera RMI":"Super Camera RMI"
+//        self == .skycam ? "MEDA Skycam":"MEDA Skycam"
+//        self == .sherlockWatson ? "SHERLOC WATSON Camera":"SHERLOC WATSON Camera"
+//        self == .fhaz ? "Front Hazard Avoidance Camera":"Front Hazard Avoidance Camera"
+//        self == .rhaz ? "Rear Hazard Avoidance Camera":"Rear Hazard Avoidance Camera"
+//        self == .mast ? "Mast Camera":"Mast Camera"
+//        self == .chemCam ? "Chemistry and Camera Complex":"Chemistry and Camera Complex"
+//        self == .mahli ? "Mars Hand Lens Imager":"Mars Hand Lens Imager"
+//        self == .mardi ? "Mars Descent Imager":"Mars Descent Imager"
+//        self == .pancam ? "Panoramic Camera":"Panoramic Camera"
+//        self == .minites ? "Miniature Thermal Emission Spectrometer (Mini-TES)":"Miniature Thermal Emission Spectrometer (Mini-TES)"
+//        self == .entry ? "Entry Camera":"Entry Camera"
+//        return self.cameraType
+//
+//    }
+
+    func reNamed() -> String {
         switch self {
             case .edlRucam:
                 return "Rover Up-Look Camera"
@@ -134,6 +166,8 @@ enum SimpleCameraName: String, Codable, Hashable, CaseIterable {
                 return "Panoramic Camera"
             case .minites:
                 return "Miniature Thermal Emission Spectrometer (Mini-TES)"
+            case .entry:
+                return "Entry Camera"
         }
     }
     /*
@@ -174,3 +208,9 @@ struct CameraNames: Codable, Identifiable {
         case fullName = "full_name"
     }
 }
+
+/*
+ var fedlDdcam: String {
+ return "Rover Up-Look Camera"
+ }
+ */

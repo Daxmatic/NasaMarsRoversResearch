@@ -35,6 +35,7 @@ class PhotoViewModel: ObservableObject {
                 let item = PhotoUrlList(id: k.id, pictureList: k.imgSrc, fullName: k.camera.fullName.rawValue, name: k.camera.name.rawValue, children: [PhotoUrlList(id: k.id, pictureList: k.imgSrc, fullName: k.camera.fullName.rawValue, name: k.camera.name.rawValue)])
                 self.photoUrlList.append(item)
             }
+            print("\( photoUrlList   )")
             return
         } catch {
             self.state = .failed(error: error)

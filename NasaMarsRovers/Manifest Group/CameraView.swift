@@ -18,17 +18,17 @@ struct CameraView: View, Equatable {
     // @State private var currentIndex = 0 /// should be not needed if i can publish the row index to the view.
     var body: some View {
         let camerasOnSol = vm.camerasOnSol
-        let children = pm.photoUrlList
+      //  let children = pm.photoUrlList
+        
         NavigationView {
             ScrollViewReader { _ in
                 VStack {
                     List(camerasOnSol) { solDay in
                         DisclosureGroup {
-                            ForEach(children) { camera in
-                                NavigationLink(destination: PhotoView(cameraName: camera.name, solDay: solDay.id, roverName: roverName)) {
+                            ForEach(Array(zip(solDay.camera,solDay.full)),id:\.0) { camera in
+                                NavigationLink(destination: PhotoView(cameraName: "\(camera.0)", solDay: solDay.id, roverName: roverName)) {
                                     Label {
-                                        Text(" \(camera.fullName) ")
-//                                       
+                                        Text("\(camera.1)")
                                             .font(.body)
                                             .foregroundColor(.primary)
                                         Text("Number of photo's: \(solDay.totalPicOnSol)")
@@ -41,6 +41,7 @@ struct CameraView: View, Equatable {
                                             .foregroundColor(.green)
                                     }
                                 }
+                             //   }
                             }.id(UUID())
                         }
                         label: {
