@@ -8,5 +8,7 @@
 import Foundation
 enum ApiConstants {
     static let roverName = "perseverance"
-    static let baseUrl = "https://api.nasa.gov/mars-photos/api/v1/manifests/\(roverName)"
+    //static let sol = "\(solDay)"
+    static let manifestBaseUrl = "https://api.nasa.gov/mars-photos/api/v1/manifests/\(roverName)"
+    static let photoBaseUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(roverName)/"
 }

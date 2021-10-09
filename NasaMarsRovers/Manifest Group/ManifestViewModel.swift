@@ -26,7 +26,7 @@ final class ManifestViewModelImpl: ManifestViewModel {
     }
 
     func getManifests() async {
-        
+        debugPrint("DEBUG: getManifests is called")
         do {
             let jsonResponse = try await service.fetch()
             manifests = jsonResponse.0.compactMap {$0.photoManifest}
@@ -35,6 +35,8 @@ final class ManifestViewModelImpl: ManifestViewModel {
                 let item = CamerasOnSol(sol: k.sol, earthDate: k.earthDate, totalPicOnSol: k.totalPhotos, camera: k.cameras.compactMap { $0.rawValue })
                 camerasOnSol.append(item)
             }
+// MARK: Somehow photoFetch to be called after this as soon a sol is selected..... stupid that i did not realize the many calls it would generate.
+
             return
 
         } catch {
