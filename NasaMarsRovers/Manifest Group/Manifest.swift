@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-
 // MARK: - Manifest
+
 struct Manifest: Codable, Hashable {
     let photoManifest: PhotoManifest
 
@@ -18,6 +18,7 @@ struct Manifest: Codable, Hashable {
 }
 
 // MARK: - PhotoManifest
+
 struct PhotoManifest: Codable, Hashable {
     let name, landingDate, launchDate, status: String
     let maxSol: Int
@@ -38,6 +39,7 @@ struct PhotoManifest: Codable, Hashable {
 }
 
 // MARK: - Photo
+
 struct SolSelectedCameras: Codable, Hashable {
     let sol: Int
     let earthDate: String
@@ -52,7 +54,7 @@ struct SolSelectedCameras: Codable, Hashable {
     }
 }
 
-enum SimpleCameraName: String, Codable, Hashable,CaseIterable {
+enum SimpleCameraName: String, Codable, Hashable, CaseIterable {
     case edlDdcam = "EDL_DDCAM"
     case edlPucam1 = "EDL_PUCAM1"
     case edlPucam2 = "EDL_PUCAM2"
@@ -66,10 +68,10 @@ enum SimpleCameraName: String, Codable, Hashable,CaseIterable {
     case navcamRight = "NAVCAM_RIGHT"
     case rearHazcamLeft = "REAR_HAZCAM_LEFT"
     case rearHazcamRight = "REAR_HAZCAM_RIGHT"
-    case sherlocWatson = "SHERLOC_WATSON"
+    case sherlockWatson = "SHERLOC_WATSON"
     case skycam = "SKYCAM"
     case supercamRmi = "SUPERCAM_RMI"
-    case chemcam = "CHEMCAM"
+    case chemCam = "CHEMCAM"
     case fhaz = "FHAZ"
     case mahli = "MAHLI"
     case mardi = "MARDI"
@@ -79,6 +81,88 @@ enum SimpleCameraName: String, Codable, Hashable,CaseIterable {
     case entry = "ENTRY"
     case minites = "MINITES"
     case pancam = "PANCAM"
+
+    func cameraNameTypes() -> String {
+        switch self {
+            case .edlRucam:
+                return "Rover Up-Look Camera"
+            case .edlDdcam:
+                return "Descent Stage Down-Look Camera"
+            case .edlPucam1:
+                return "Parachute Up-Look Camera A"
+            case .edlPucam2:
+                return "Parachute Up-Look Camera B"
+            case .edlRdcam:
+                return "Rover Down-Look Camera"
+            case .frontHazcamLeftA:
+                return "Front Hazard Avoidance Camera - Left"
+            case .frontHazcamRightA:
+                return "Front Hazard Avoidance Camera - Right"
+            case .mczLeft:
+                return "Mast Camera Zoom - Left"
+            case .mczRight:
+                return "Mast Camera Zoom - Right"
+            case .navcam:
+                return "Navigation Camera"
+            case .navcamLeft:
+                return "Navigation Camera - Left"
+            case .navcamRight:
+                return "Navigation Camera - Right"
+            case .rearHazcamLeft:
+                return "Rear Hazard Avoidance Camera - Left"
+            case .rearHazcamRight:
+                return "Rear Hazard Avoidance Camera - Right"
+            case .supercamRmi:
+                return "Super Camera RMI"
+            case .skycam:
+                return "MEDA Skycam"
+            case .sherlockWatson:
+                return "SHERLOC WATSON Camera"
+            case .fhaz:
+                return "Front Hazard Avoidance Camera"
+            case .rhaz:
+                return "Rear Hazard Avoidance Camera"
+            case .mast:
+                return "Mast Camera"
+            case .chemCam:
+                return "Chemistry and Camera Complex"
+            case .mahli:
+                return "Mars Hand Lens Imager"
+            case .mardi:
+                return "Mars Descent Imager"
+            case .pancam:
+                return "Panoramic Camera"
+            case .minites:
+                return "Miniature Thermal Emission Spectrometer (Mini-TES)"
+        }
+    }
+    /*
+     case edlRucam = "Rover Up-Look Camera"
+     case edlDdcam = "Descent Stage Down-Look Camera"
+     case edlPucam1 = "Parachute Up-Look Camera A"
+     case edlPucam2 = "Parachute Up-Look Camera B"
+     case edlRdcam = "Rover Down-Look Camera"
+     case frontHazcamLeftA = "Front Hazard Avoidance Camera - Left"
+     case frontHazcamRightA = "Front Hazard Avoidance Camera - Right"
+     case mczLeft = "Mast Camera Zoom - Left"
+     case mczRight = "Mast Camera Zoom - Right"
+     case navcam = "Navigation Camera"
+     case navcamLeft = "Navigation Camera - Left"
+     case navcamRight = "Navigation Camera - Right"
+     case rearHazcamLeft = "Rear Hazard Avoidance Camera - Left"
+     case rearHazcamRight = "Rear Hazard Avoidance Camera - Right"
+     case supercamRmi = "Super Camera RMI"
+     case skycam = "MEDA Skycam"
+     case sherlockWatson = "SHERLOC WATSON Camera"
+     case fhaz = "Front Hazard Avoidance Camera"
+     case rhaz = "Rear Hazard Avoidance Camera"
+     case mast = "Mast Camera"
+     case chemCam = "Chemistry and Camera Complex"
+     case mahli = "Mars Hand Lens Imager"
+     case mardi = "Mars Descent Imager"
+     case pancam = "Panoramic Camera"
+     case minites = "Miniature Thermal Emission Spectrometer (Mini-TES)"
+     */
 }
 
 struct CameraNames: Codable, Identifiable {
@@ -90,4 +174,3 @@ struct CameraNames: Codable, Identifiable {
         case fullName = "full_name"
     }
 }
-
