@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct PhotoView: View {
-    @StateObject private var vm = PhotoViewModel(
+    @ObservedObject private var vm = PhotoViewModel(
         service: ManifestServiceImpl()
     )
+
     @State var cameraName: String
     @State var solDay: Int
     @State var roverName: String
@@ -42,7 +43,11 @@ struct PhotoView: View {
         // - MARK: everything below needs to be like this!
 
         .task {
-            await vm.getURLs(url: URL(string: "https://api.nasa.gov/mars-photos/api/v1/rovers/\(roverName)/photos?sol=\(solDay)&cameras=\(cameraName)&api_key=5a5bBzC7s2oSRahSUO0ol8nCXhDdMjZrbAXUMpJi")!)
+            guard let url = URL(string: "https://api.nasa.gov/mars-photos/api/v1/rovers/\(roverName)/photos?sol=\(solDay)&camera=\(cameraName)&api_key=5a5bBzC7s2oSRahSUO0ol8nCXhDdMjZrbAXUMpJi") else {
+                print("Invalid URL")
+                return
+            }
+            await vm.getURLs(url:url)
             print("  DEBUG:  await vm.getURLs(url: URL) called")
         }
     }

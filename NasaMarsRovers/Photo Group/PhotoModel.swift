@@ -30,7 +30,7 @@ struct UrlPhotos: Codable, Hashable {
 }
 
 // MARK: - Camera
-struct CameraComplete: Codable, Hashable {
+struct CameraComplete: Codable, Hashable,Identifiable {
     let id: Int
     let name: CameraName
     let roverId: Int
@@ -42,7 +42,7 @@ struct CameraComplete: Codable, Hashable {
         case fullName = "full_name"
     }
 }
-enum FullName: String, Codable {
+enum FullName: String, Codable,CaseIterable {
     case edlRucam = "Rover Up-Look Camera"
     case edlDdcam = "Descent Stage Down-Look Camera"
     case edlPucam1 = "Parachute Up-Look Camera A"

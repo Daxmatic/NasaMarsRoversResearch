@@ -32,7 +32,7 @@ class PhotoViewModel: ObservableObject {
             let urls = try await service.fetchURLs(url: url)
             self.state = .success(data: urls)
             for k in urls.photos {
-                let item = PhotoUrlList(id: k.id, pictureList: k.imgSrc, children: [PhotoUrlList(id: k.id, pictureList: k.imgSrc)])
+                let item = PhotoUrlList(id: k.id, pictureList: k.imgSrc, fullName: k.camera.fullName.rawValue, name: k.camera.name.rawValue, children: [PhotoUrlList(id: k.id, pictureList: k.imgSrc, fullName: k.camera.fullName.rawValue, name: k.camera.name.rawValue)])
                 self.photoUrlList.append(item)
             }
             return

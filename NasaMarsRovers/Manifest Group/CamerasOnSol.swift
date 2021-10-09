@@ -20,6 +20,8 @@ struct CamerasOnSol: Identifiable {
 struct PhotoUrlList: Identifiable {
     var id: Int
     var pictureList: String
+    var fullName: FullName.RawValue
+    var name: CameraName.RawValue
     var children: [PhotoUrlList]? = nil
 }
 

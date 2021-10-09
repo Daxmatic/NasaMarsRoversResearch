@@ -9,22 +9,26 @@ import Combine
 import SwiftUI
 
 struct CameraView: View, Equatable {
-    @StateObject private var vm = ManifestViewModelImpl(
+    @EnvironmentObject var vm: ManifestViewModelImpl
+    @StateObject var pm = PhotoViewModel(
         service: ManifestServiceImpl()
     )
     @State var roverName: String
-    //@State private var currentIndex = 0 /// should be not needed if i can publish the row index to the view.
+    @State var solDay: Int = 0
+    // @State private var currentIndex = 0 /// should be not needed if i can publish the row index to the view.
     var body: some View {
         let camerasOnSol = vm.camerasOnSol
+        let children = pm.photoUrlList
         NavigationView {
             ScrollViewReader { _ in
                 VStack {
                     List(camerasOnSol) { solDay in
                         DisclosureGroup {
-                            ForEach(solDay.camera, id: \.self) { camera in
-                                NavigationLink(destination: PhotoView(cameraName: camera, solDay: solDay.id, roverName: roverName)) {
+                            ForEach(children) { camera in
+                                NavigationLink(destination: PhotoView(cameraName: camera.name, solDay: solDay.id, roverName: roverName)) {
                                     Label {
-                                        Text("Camera: \(camera.localizedCapitalized.filter { $0 != "_" })") // TODO: get the names from the photo model instead of the manifest
+                                        Text(" \(camera.fullName) ")
+//                                       
                                             .font(.body)
                                             .foregroundColor(.primary)
                                         Text("Number of photo's: \(solDay.totalPicOnSol)")
@@ -56,10 +60,10 @@ struct CameraView: View, Equatable {
                     // MARK: This is the end of the Button list.
                 }
             }
-        }
-        .task {
-            await vm.getManifests()
-        }
+        }.environmentObject(vm)
+            .task {
+                await pm.getURLs(url: URL(string: "https://api.nasa.gov/mars-photos/api/v1/rovers/\(roverName)/photos?sol=\(solDay)&api_key=5a5bBzC7s2oSRahSUO0ol8nCXhDdMjZrbAXUMpJi")!)
+            }
     }
 
     static func == (lhs: CameraView, rhs: CameraView) -> Bool {
@@ -108,6 +112,6 @@ extension CameraView {
 
 struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraView(roverName: "perseverance")
+        CameraView(vm: EnvironmentObject(), pm: PhotoViewModel(service: ManifestServiceImpl()), roverName: "Perseverance", solDay: 0).environmentObject(ManifestViewModelImpl(service: ManifestServiceImpl()))
     }
 }

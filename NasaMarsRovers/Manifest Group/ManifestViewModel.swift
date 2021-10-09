@@ -23,6 +23,7 @@ final class ManifestViewModelImpl: ManifestViewModel {
     init(service: ManifestService) {
         self.service = service
         
+        
     }
 
     func getManifests() async {
@@ -36,7 +37,7 @@ final class ManifestViewModelImpl: ManifestViewModel {
                 camerasOnSol.append(item)
             }
 // MARK: Somehow photoFetch to be called after this as soon a sol is selected..... stupid that i did not realize the many calls it would generate.
-
+//print("\(  camerasOnSol   )")
             return
 
         } catch {
